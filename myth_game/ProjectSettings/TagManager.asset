@@ -3,12 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BookOfRecords
+  - Stamp
+  - OpenBookOfRecords
+  - GuideBook
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
   - 
@@ -40,4 +44,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2786497345
+    locked: 0
+  - name: Foreground
+    uniqueID: 141020311
+    locked: 0
+  - name: BookOfRecords
+    uniqueID: 3367884143
+    locked: 0
+  - name: OpenBookOfRecords
+    uniqueID: 175294095
+    locked: 0
+  - name: Stamps&Guide
+    uniqueID: 1818304889
+    locked: 0
+  - name: Options
+    uniqueID: 184254209
     locked: 0
