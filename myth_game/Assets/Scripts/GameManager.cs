@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
         //check if stamp is within boundary
         public bool m_stampWithinBoundary = false;
 
+
+        //Customer variables
+        //Check if customer being served
+        public bool m_isServingCustomer = false;
+        //Current customer bookOfRecord
+        public GameObject m_currentBookOfRecord = null;
+
     }
 
     public GameVariables variables
