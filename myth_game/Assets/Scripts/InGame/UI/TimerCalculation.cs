@@ -30,6 +30,7 @@ public class TimerCalculation : MonoBehaviour
         {
             if (GameManager.instance.variables.m_WorkTimer > 0)
             {
+                GameManager.instance.variables.m_timerRunsOut = false;
                 GameManager.instance.variables.m_WorkTimer -= Time.deltaTime;
                 m_timerText.text = DisplayTime(GameManager.instance.variables.m_WorkTimer);
             }
@@ -37,6 +38,7 @@ public class TimerCalculation : MonoBehaviour
             {
                 GameManager.instance.variables.m_WorkTimer = 0;
                 GameManager.instance.variables.m_isWorkTimerRunning = false;
+                GameManager.instance.variables.m_timerRunsOut = true;
             }
         }
     }

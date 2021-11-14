@@ -11,18 +11,25 @@ public class BookOfRecords : MonoBehaviour
 
     void OnEnable()
     {
+        GameManager.instance.InstantiateOpenBookEvent += InstantiateOpenBookOfRecord;
         this.GetComponent<SpriteRenderer>().sprite = m_bookColor[(int)Random.Range(0.0f, 3.0f)];
     }
 
 	void OnDisable()
 	{
-		
-	}
+        GameManager.instance.InstantiateOpenBookEvent -= InstantiateOpenBookOfRecord;
+    }
 
 	// Update is called once per frame
 	void Update()
     {
 
 
+    }
+
+    void InstantiateOpenBookOfRecord()
+	{
+        GameManager.instance.variables.m_currentOpenBookOfRecord = Instantiate(m_openBook);
+        GameManager.instance.variables.m_openBookActive = true;
     }
 }

@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdfc76bab4890d4cb484dd4e5abcb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dailyTimer: 60
+  m_dailyTimer: 10
   m_quotaToReach: 10
   m_stampInkPrefab: {fileID: 59074070039375102, guid: a91ca03dcc9f9f04c803ca39e82b8ef6, type: 3}
 --- !u!4 &1275481769

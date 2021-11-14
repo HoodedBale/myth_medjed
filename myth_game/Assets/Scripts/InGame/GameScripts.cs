@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using TMPro;
 public class GameScripts : MonoBehaviour
 {
@@ -38,9 +38,31 @@ public class GameScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         StampCalculation();
+
+        WinningAndLosingCondition();
+
     }
+
+    void WinningAndLosingCondition()
+	{
+        //Check if timer runs out 
+        if(GameManager.instance.variables.m_timerRunsOut)
+		{
+            //If quota not met, reset scene
+            if (GameManager.instance.variables.m_currentPlayerQuota != GameManager.instance.variables.m_quotaNumberToReach)
+            {
+                GameManager.instance.ResetVariablesEvent();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            }
+            else
+            {
+                //WIn game
+            }
+		}
+
+	}
 
 
     void StampCalculation()
@@ -65,8 +87,7 @@ public class GameScripts : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<BookOfRecords>())
                     {
-                        Instantiate(hit.collider.gameObject.GetComponent<BookOfRecords>().m_openBook);
-                        GameManager.instance.variables.m_openBookActive = true;
+                        GameManager.instance.InstantiateOpenBookEvent();
 
                     }
                 }
@@ -111,16 +132,25 @@ public class GameScripts : MonoBehaviour
 	{
         m_isStampClicked = false;
 
-        //Need check if within the stamp boundary
-        if (GameManager.instance.variables.m_stampWithinBoundary)
+        //Need check if within the stamp boundary and if there is openbook
+        if (GameManager.instance.variables.m_stampWithinBoundary && GameManager.instance.variables.m_currentOpenBookOfRecord)
         {
             //Create the ink
-            m_stampInk = Instantiate(m_stampInkPrefab);
+            GameManager.instance.variables.m_currentInkUsed = m_stampInk = Instantiate(m_stampInkPrefab);
             //Set ink to current stamp position
             m_stampInk.transform.position = m_stampGameObject.transform.position;
             //Set ink sprite to current stamp sprite
             if (m_stampInk.GetComponent<SpriteRenderer>() && m_stampGameObject.GetComponent<StampInk>())
+            {
                 m_stampInk.GetComponent<SpriteRenderer>().sprite = m_stampGameObject.GetComponent<StampInk>().stampInk;
+                
+                //Get Sprite Name
+                string spriteName = m_stampGameObject.GetComponent<StampInk>().stampInk.name;
+
+                //This is to set which ink is used, get the sprite name last number: eg: ink_2, we take in 2
+                GameManager.instance.variables.m_stampedNumber = int.Parse(spriteName.Substring(spriteName.IndexOf('_') + 1));
+                GameManager.instance.variables.m_isInkedOnBook = true;
+            }
 
         }
 

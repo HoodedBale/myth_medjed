@@ -8,15 +8,23 @@ public class GameManager : MonoBehaviour
     GameVariables m_variables = new GameVariables();
     public delegate void void_event();
 
-    public void_event BookOfRecordsClicked;
+    public void_event BookOfRecordsClickedEvent;
+    public void_event CustomerServedCorrectlyEvent;
+    public void_event DestroyInstantiateEvent;
 
+    public void_event InstantiateOpenBookEvent;
 
+    public void_event WinGameEvent;
+    public void_event LoseGameEvent;
+
+    public void_event ResetVariablesEvent;
 
     public class GameVariables
     {
         //Countdown timer
         public float m_WorkTimer = 0.0f;
         public bool m_isWorkTimerRunning = false;
+        public bool m_timerRunsOut = false;
 
         //Quota To meet
         public int m_currentPlayerQuota = 0;
@@ -32,8 +40,18 @@ public class GameManager : MonoBehaviour
         //Customer variables
         //Check if customer being served
         public bool m_isServingCustomer = false;
+
         //Current customer bookOfRecord
         public GameObject m_currentBookOfRecord = null;
+        public GameObject m_currentOpenBookOfRecord = null;
+
+        //Stamp Variable
+        //Detect which stamp is used to stamp the book
+        public GameObject m_currentInkUsed = null;
+        public int m_stampedNumber;
+        public bool m_isInkedOnBook;
+
+        
 
     }
 
@@ -58,6 +76,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        CustomerServedCorrectlyEvent += ServedCustomerCorrectly;
+        DestroyInstantiateEvent += DestroyBookAndInk;
+        ResetVariablesEvent += ResetVariable;
     }
 
     public static GameManager GetInstance()
@@ -78,6 +100,29 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void ResetVariable()
+	{
+        m_variables = new GameVariables();
+    }
 
+    void ServedCustomerCorrectly()
+	{
+        variables.m_currentPlayerQuota++;
+        variables.m_isServingCustomer = false;
+        variables.m_isInkedOnBook = false;
+    }
+
+    void DestroyBookAndInk()
+	{
+        if(variables.m_currentBookOfRecord)
+            Destroy(variables.m_currentBookOfRecord);
+
+        if(variables.m_currentInkUsed)
+            Destroy(variables.m_currentInkUsed);
+
+        if (variables.m_currentOpenBookOfRecord)
+            Destroy(variables.m_currentOpenBookOfRecord);
+
+    }
 }
     
