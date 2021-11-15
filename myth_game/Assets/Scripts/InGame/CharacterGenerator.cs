@@ -18,6 +18,42 @@ public class CharacterGenerator : MonoBehaviour
     int currentNose = 0;
     int currentEyes = 0;
 
+    public Sprite body
+    {
+        get
+        {
+            return bodies[currentBody].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+    public Sprite head
+    {
+        get
+        {
+            return heads[currentHead].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+    public Sprite mouth
+    {
+        get
+        {
+            return mouths[currentMouth].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+    public Sprite nose
+    {
+        get
+        {
+            return noses[currentNose].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+    public Sprite eye
+    {
+        get
+        {
+            return eyes[currentEyes].GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
