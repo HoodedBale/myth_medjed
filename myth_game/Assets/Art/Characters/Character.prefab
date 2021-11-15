@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5799915681237371751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5799915681237371749}
+  - component: {fileID: 5799915681237371748}
+  m_Layer: 0
+  m_Name: Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5799915681237371749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799915681237371751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.55, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5799915681237371748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799915681237371751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d78735c0308324baf58e2358ccb3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 0.5
+  bodies:
+  - {fileID: 2858813202071977654, guid: 4a3037f325e34d740a7758daebe3605d, type: 3}
+  heads:
+  - {fileID: 3960491312073927027, guid: 36dbdd9298b6b094c980406fe674b395, type: 3}
+  - {fileID: 416684802911005477, guid: 592a4a6edac41f94f8000f76ee28c701, type: 3}
+  - {fileID: 4601366178821029622, guid: 19abb402958046042be7cb489e2686f7, type: 3}
+  - {fileID: 4905036656983529672, guid: 00f07d221a0d53d4596a5ae7964ffbb4, type: 3}
+  mouths:
+  - {fileID: 2385696755020728209, guid: 508c56a0faf736a4ab2b9d34fbc3840c, type: 3}
+  - {fileID: 7819201019159986537, guid: 98b2cecfda08638458cca46b236cdd81, type: 3}
+  - {fileID: 6907456431478462653, guid: fd19ac749895163488c7a6ce87dd339d, type: 3}
+  noses:
+  - {fileID: 7397758710113728729, guid: a88da3ce8a2d6414e8b71f18e0b85574, type: 3}
+  - {fileID: 1693354326749386523, guid: 09165ebbc89824842893e783a060e27a, type: 3}
+  - {fileID: 3604015870746928922, guid: 3fd7dbe5cc6188c4ca4731932e32b573, type: 3}
+  eyes:
+  - {fileID: 4147265287326137965, guid: c5b4d6340ba490241a9d5e1113bb8bf0, type: 3}
+  - {fileID: 6928182495353250365, guid: d9a8e81fea453e54db2b1cb9d8681593, type: 3}
+  - {fileID: 3893943029433899245, guid: 66ff94360b9536a45aa473dd0bca91eb, type: 3}
