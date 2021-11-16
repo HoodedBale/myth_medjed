@@ -238,6 +238,36 @@ Transform:
   m_Father: {fileID: 160546213}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &181986166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 181986167}
+  m_Layer: 0
+  m_Name: SpiritEndLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &181986167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181986166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.19, y: 1.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1563162278}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &222582572
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +447,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_quotaInput: {fileID: 958615697}
+--- !u!1 &409398253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409398254}
+  m_Layer: 0
+  m_Name: SpiritStopLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &409398254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409398253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.05, y: 1.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1563162278}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1050,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57de0b2f71270147b5939b4ef4d359f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1234694689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234694690}
+  m_Layer: 0
+  m_Name: SpiritSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1234694690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234694689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.28, y: 1.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1563162278}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252037018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,9 +1134,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1508469951
-  m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingLayerID: 141020311
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e33f52377bfd28d49b259302f234fedc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1102,7 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdfc76bab4890d4cb484dd4e5abcb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dailyTimer: 10
+  m_dailyTimer: 50
   m_quotaToReach: 10
   m_stampInkPrefab: {fileID: 59074070039375102, guid: a91ca03dcc9f9f04c803ca39e82b8ef6, type: 3}
 --- !u!4 &1275481769
@@ -1133,8 +1223,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   m_bookOfRecordPrefab: {fileID: 5310964862294914838, guid: 5086d780e2540e347b6e71d1563b39bf, type: 3}
+  m_spiritPrefab: {fileID: 5799915681237371751, guid: ca675aba4b994f840b6d658f4c21e2d7, type: 3}
   m_bookOfRecordSpawnLocation: {fileID: 977355634}
   m_bookOfRecordStopLocation: {fileID: 222582573}
+  m_spiritSpawnLocation: {fileID: 1234694690}
+  m_spiritStopLocation: {fileID: 409398254}
+  m_spiritEndLocation: {fileID: 181986167}
+--- !u!1 &1563162277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1563162278}
+  m_Layer: 0
+  m_Name: SpiritPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1563162278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563162277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1234694690}
+  - {fileID: 409398254}
+  - {fileID: 181986167}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1632847163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,9 +1417,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1508469951
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: 141020311
+  m_SortingLayer: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 66722a3d9a5b7df4bad7a7a26b4e13bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

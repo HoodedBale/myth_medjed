@@ -6,17 +6,28 @@ public class CustomerScripts : MonoBehaviour
 {
     public float speed = 5.0f;
     public GameObject m_bookOfRecordPrefab;
+    public GameObject m_spiritPrefab;
+
 
     public Transform m_bookOfRecordSpawnLocation;
     public Transform m_bookOfRecordStopLocation;
 
 
+    public Transform m_spiritSpawnLocation;
+    public Transform m_spiritStopLocation;
+    public Transform m_spiritEndLocation;
+
+
+
+
     private GameObject tempBookOfRecord;
+    private GameObject tempSpirit;
 
     // Start is called before the first frame update
     void Start()
     {
         tempBookOfRecord = null;
+        tempSpirit = null;
     }
 
     // Update is called once per frame
@@ -28,6 +39,10 @@ public class CustomerScripts : MonoBehaviour
             //Create new book of record
             tempBookOfRecord = GameManager.instance.variables.m_currentBookOfRecord = Instantiate(m_bookOfRecordPrefab);
             tempBookOfRecord.transform.position = m_bookOfRecordSpawnLocation.position;
+
+
+            tempSpirit = Instantiate(m_spiritPrefab);
+            tempSpirit.transform.position = m_spiritSpawnLocation.position;
 
             //Generate the book of record info
             GenerateBookOfRecordInfo(tempBookOfRecord);
@@ -42,6 +57,7 @@ public class CustomerScripts : MonoBehaviour
         if (tempBookOfRecord && !GameManager.instance.variables.m_isInkedOnBook)
         {
             tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordStopLocation.position, step);
+            tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritStopLocation.position, step);
         }
 
 
@@ -54,14 +70,15 @@ public class CustomerScripts : MonoBehaviour
                 if (tempBookOfRecord)
                 {
                     tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position, step);
+                    tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritEndLocation.position, step);
                 }
 
 
                 if (Vector3.Distance(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position) < 0.1f)
                 {
-                    GameManager.instance.CustomerServedCorrectlyEvent();
-                    GameManager.instance.DestroyInstantiateEvent();
-                }
+					GameManager.instance.CustomerServedCorrectlyEvent();
+					GameManager.instance.DestroyInstantiateEvent();
+				}
 
             }
             else
