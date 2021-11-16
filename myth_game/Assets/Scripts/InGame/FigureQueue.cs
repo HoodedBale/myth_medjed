@@ -89,9 +89,6 @@ public class FigureQueue : MonoBehaviour
         foreach(var fig in figureQueue)
         {
             fig.figObj.GetComponent<Animator>().SetBool("walk", false);
-            foreach(var sprite in fig.figObj.transform.GetComponentsInChildren<SpriteRenderer>())
-            {
-            }
         }
 
         if(figureQueue.Peek().weight >= maxFigures)
