@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameScripts : MonoBehaviour
 {
-
     bool m_isStampClicked;
     
     Vector3 m_initialStampPosition;
@@ -19,17 +18,18 @@ public class GameScripts : MonoBehaviour
     //Quota
     public int m_quotaToReach;
 
-
-
     [Space()]
     //Gameobject
     public GameObject m_stampInkPrefab;
+
+    bool m_isGuideBookClicked;
 
 
     // Start is called before the first frame update
     void Start()
     {
         m_isStampClicked = false;
+        m_isGuideBookClicked = false;
 
         GameManager.instance.variables.m_WorkTimer = m_dailyTimer;
         GameManager.instance.variables.m_quotaNumberToReach = m_quotaToReach;
@@ -41,7 +41,6 @@ public class GameScripts : MonoBehaviour
         StampCalculation();
 
         WinningAndLosingCondition();
-
     }
 
     void WinningAndLosingCondition()
@@ -79,6 +78,12 @@ public class GameScripts : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
+            if (m_isGuideBookClicked)
+            {
+                Destroy(GameManager.instance.variables.m_currentopenGuideBook);
+                m_isGuideBookClicked = false;
+            }
+
             //Check if there is any game object clicked
             if (hit.collider != null)
             {
@@ -99,6 +104,17 @@ public class GameScripts : MonoBehaviour
                     //Find specific stamp
                     m_stampGameObject = GameObject.Find(hit.collider.name);
                     m_initialStampPosition = m_stampGameObject.GetComponent<StampInk>().m_initialPosition;
+                }
+
+                else if (hit.collider.gameObject.tag == "GuideBook")
+                {
+                    m_isGuideBookClicked = true;
+
+                    if (hit.collider.gameObject.GetComponent<GuideBook>())
+                    {
+                        hit.collider.gameObject.GetComponent<GuideBook>().InstantiateOpenGuideBook();
+                        //GameManager.instance.InstantiateOpenGuideBookEvent();
+                    }
                 }
             }
         }

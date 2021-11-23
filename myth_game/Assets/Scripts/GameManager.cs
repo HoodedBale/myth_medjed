@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public void_event DestroyInstantiateEvent;
 
     public void_event InstantiateOpenBookEvent;
+    
+    //guidebook
+    public void_event InstantiateOpenGuideBookEvent;
 
     public void_event WinGameEvent;
     public void_event LoseGameEvent;
@@ -36,6 +39,9 @@ public class GameManager : MonoBehaviour
         //check if stamp is within boundary
         public bool m_stampWithinBoundary = false;
 
+        //check if guidebook is open
+        public bool m_openGuideBookActive = false;
+        public GameObject m_currentopenGuideBook = null;
 
         //Customer variables
         //Check if customer being served
