@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5115cb878fde94ba726029a2309b7c, type: 3}
+  m_Name: SinsObject
+  m_EditorClassIdentifier: 
+  m_sinsObjects:
+  - m_hellNumber: 2
+    SinsName:
+    - Conmen
+    - Robbers
+    - Corruption
+    - Prostitutes
+    - Stealing and gambling
+    - Inflicting physical injury
+  - m_hellNumber: 3
+    SinsName:
+    - Ungratefulness
+    - Disrespect to elders
+    - Escape from prison
+    - Drug addicts and traffickers
+    - Tome Robbers
+    - Urging people into crime and social unrest
+  - m_hellNumber: 4
+    SinsName:
+    - Tax dodger
+    - Refusal to pay rent
+    - Business fraud
+    - Disobedience to one siblings
+    - Lack of filial piety
+  - m_hellNumber: 5
+    SinsName:
+    - Plotted another's death for his property or money
+    - Money lenders with exorbitant interest rate
+  - m_hellNumber: 6
+    SinsName:
+    - Cheating
+    - Cursing
+    - Abducting others
+    - Misuse of books
+    - Possession of pornographic materials
+    - Breaking written rules and regulation
+    - Wasting food
+  - m_hellNumber: 7
+    SinsName:
+    - Rumour-mongers
+    - Sowing discord among family members
+    - Rape
+    - Driving someone to their death
+  - m_hellNumber: 8
+    SinsName:
+    - Causing trouble for parents or family members
+    - Harming others to benefit oneself
+  - m_hellNumber: 9
+    SinsName:
+    - Murder
+    - Rape
+    - Neglect of the old and young
+  - m_hellNumber: 10
+    SinsName:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 

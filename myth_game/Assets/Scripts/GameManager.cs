@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public SinsScriptableObject m_sinsObject;
+
+    public SinsScriptableObject SinsVariables
+    {
+        get
+        {
+            return m_sinsObject;
+        }
+    }
+
+
     private static GameManager m_instance = null;
     GameVariables m_variables = new GameVariables();
     public delegate void void_event();
