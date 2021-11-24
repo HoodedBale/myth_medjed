@@ -15,64 +15,41 @@ MonoBehaviour:
   m_sinsObjects:
   - m_hellNumber: 2
     SinsName:
-    - Conmen
     - Robbers
     - Corruption
-    - Prostitutes
-    - Stealing and gambling
-    - Inflicting physical injury
+    - Gambling
   - m_hellNumber: 3
     SinsName:
-    - Ungratefulness
-    - Disrespect to elders
     - Escape from prison
+    - Disrespect to elders
     - Drug addicts and traffickers
-    - Tome Robbers
-    - Urging people into crime and social unrest
   - m_hellNumber: 4
     SinsName:
     - Tax dodger
-    - Refusal to pay rent
     - Business fraud
     - Disobedience to one siblings
-    - Lack of filial piety
   - m_hellNumber: 5
     SinsName:
-    - Plotted another's death for his property or money
     - Money lenders with exorbitant interest rate
+    - Plotted another's death for his property or money
   - m_hellNumber: 6
     SinsName:
-    - Cheating
     - Cursing
+    - Cheating
     - Abducting others
-    - Misuse of books
-    - Possession of pornographic materials
-    - Breaking written rules and regulation
-    - Wasting food
   - m_hellNumber: 7
     SinsName:
     - Rumour-mongers
-    - Sowing discord among family members
-    - Rape
     - Driving someone to their death
   - m_hellNumber: 8
     SinsName:
-    - Causing trouble for parents or family members
     - Harming others to benefit oneself
+    - Causing trouble for parents or family members
   - m_hellNumber: 9
     SinsName:
-    - Murder
     - Rape
+    - Murder
     - Neglect of the old and young
   - m_hellNumber: 10
     SinsName:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+    - Reincarnation

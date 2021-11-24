@@ -30,9 +30,15 @@ public class FigureQueue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             MoveLine();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log(MiscScripts.GeneratePresetName());
+
         }
     }
 

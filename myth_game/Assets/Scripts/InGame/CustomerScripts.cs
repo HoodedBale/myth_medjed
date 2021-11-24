@@ -44,9 +44,8 @@ public class CustomerScripts : MonoBehaviour
             tempSpirit = Instantiate(m_spiritPrefab);
             tempSpirit.transform.position = m_spiritSpawnLocation.position;
 
-            //Generate the book of record info
-            GenerateBookOfRecordInfo(tempBookOfRecord);
-
+            ////Generate the book of record info
+            //GenerateBookOfRecordInfo(tempBookOfRecord);
 
             //Currently serving customer
             GameManager.instance.variables.m_isServingCustomer = true;
@@ -66,10 +65,10 @@ public class CustomerScripts : MonoBehaviour
 		{
 			if (CheckIfSentCorrectly())
 			{
-                //Animation
+                ////Animation
                 if (tempBookOfRecord)
                 {
-                    tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position, step);
+                //    tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position, step);
                     tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritEndLocation.position, step);
                 }
 

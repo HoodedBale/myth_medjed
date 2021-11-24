@@ -31,5 +31,14 @@ public class BookOfRecords : MonoBehaviour
 	{
         GameManager.instance.variables.m_currentOpenBookOfRecord = Instantiate(m_openBook);
         GameManager.instance.variables.m_openBookActive = true;
+
+        if (GameManager.instance.variables.m_currentOpenBookOfRecord.GetComponent<OpenBookOfRecords>())
+        {
+            OpenBookOfRecords temp = GameManager.instance.variables.m_currentOpenBookOfRecord.GetComponent<OpenBookOfRecords>();
+
+            temp.m_characterName.text = MiscScripts.GeneratePresetName();
+        }
+
+        
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = System.Random;
 public class GameManager : MonoBehaviour
 {
     public SinsScriptableObject m_sinsObject;
@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour
         public int m_stampedNumber;
         public bool m_isInkedOnBook;
 
-        
 
     }
 
@@ -112,28 +111,30 @@ public class GameManager : MonoBehaviour
     }
 
     void ResetVariable()
-	{
+    {
         m_variables = new GameVariables();
     }
 
     void ServedCustomerCorrectly()
-	{
+    {
         variables.m_currentPlayerQuota++;
         variables.m_isServingCustomer = false;
         variables.m_isInkedOnBook = false;
     }
 
     void DestroyBookAndInk()
-	{
-        if(variables.m_currentBookOfRecord)
+    {
+        if (variables.m_currentBookOfRecord)
             Destroy(variables.m_currentBookOfRecord);
 
-        if(variables.m_currentInkUsed)
+        if (variables.m_currentInkUsed)
             Destroy(variables.m_currentInkUsed);
 
         if (variables.m_currentOpenBookOfRecord)
             Destroy(variables.m_currentOpenBookOfRecord);
 
     }
+
+
 }
     
