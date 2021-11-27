@@ -33,8 +33,22 @@ public class GameManager : MonoBehaviour
 
     public void_event ResetVariablesEvent;
 
+    //Game level variables
+    public int m_GameLevel = 1;
+
+    public int m_Level1MaxStamp = 4;
+    public int m_Level2MaxStamp = 7;
+    public int m_Level3MaxStamp = 10;
+
+    public int m_Level1MaxRecords = 0;
+    public int m_Level2MaxRecords = 0;
+    public int m_Level3MaxRecords = 0;
+
+
     public class GameVariables
     {
+
+
         //Countdown timer
         public float m_WorkTimer = 0.0f;
         public bool m_isWorkTimerRunning = false;

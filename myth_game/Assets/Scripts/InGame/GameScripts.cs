@@ -10,6 +10,7 @@ public class GameScripts : MonoBehaviour
     Vector3 m_initialStampPosition;
     GameObject m_stampGameObject;
     GameObject m_stampInk;
+    GameObject m_stampLevel;
 
     //Timer
     public float m_dailyTimer;
@@ -17,6 +18,11 @@ public class GameScripts : MonoBehaviour
 
     //Quota
     public int m_quotaToReach;
+
+    //LevelStampPrefab
+    public GameObject m_stampLevel1;
+    public GameObject m_stampLevel2;
+    public GameObject m_stampLevel3;
 
     [Space()]
     //Gameobject
@@ -33,6 +39,23 @@ public class GameScripts : MonoBehaviour
 
         GameManager.instance.variables.m_WorkTimer = m_dailyTimer;
         GameManager.instance.variables.m_quotaNumberToReach = m_quotaToReach;
+
+        switch (GameManager.instance.m_GameLevel)
+        {
+            case 1:
+                m_stampLevel = Instantiate(m_stampLevel1);
+                break;
+            case 2:
+                m_stampLevel = Instantiate(m_stampLevel2);
+                break;
+            case 3:
+                m_stampLevel = Instantiate(m_stampLevel3);
+                break;
+            default:
+                m_stampLevel = Instantiate(m_stampLevel3);
+                break;
+        }
+
     }
 
     // Update is called once per frame

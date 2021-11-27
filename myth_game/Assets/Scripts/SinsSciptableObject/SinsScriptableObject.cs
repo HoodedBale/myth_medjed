@@ -45,7 +45,7 @@ public class SinsScriptableObject : ScriptableObject
 		for(int i = 0; i < numberOfSins; ++i)
 		{
 			string tempName;
-			int hellNumberTemp = Random.Range(2, maxHellNumber);
+			int hellNumberTemp = Random.Range(2, maxHellNumber + 1);
 
 			if (HellElement(hellNumberTemp) != null)
 			{
@@ -56,12 +56,12 @@ public class SinsScriptableObject : ScriptableObject
 				--i;
 				continue;
 			}
-
+			Debug.Log("I value " + i + " The hell number : " + hellNumberTemp + "  Sins name : " + tempName);
 			MiniSins temp = new MiniSins(hellNumberTemp, tempName);
 			tempSins.Add(temp);
 		}
-
-		return tempSins;
+		
+		return MakeDistinct(tempSins);
 	}
 
 	//hell 4 7 5 //list 3 5 8 4
@@ -127,5 +127,43 @@ public class SinsScriptableObject : ScriptableObject
 		}
 		return null;
 	}
+
+	public List<MiniSins> MakeDistinct(List<MiniSins> sins)
+    {
+		var temp = new List<MiniSins>();
+		for(int i = 0 ; i < sins.Count; i++)
+        {
+			if(temp.Count == 0)
+            {
+				temp.Add(sins[i]);
+			}
+			else
+            {
+				bool dontAdd = false;
+				for (int j = 0; j < temp.Count; j++)
+				{
+					if(sins[i].SinsName == temp[j].SinsName)
+                    {
+						dontAdd = true;
+					}
+				}
+
+				if(!dontAdd)
+					temp.Add(sins[i]);
+			}
+        }
+		return temp;
+    }
+
+	public string ConvertListOfSinsToString(List<MiniSins> list)
+    {
+		string temp = "";
+		foreach(MiniSins s in list)
+        {
+			temp += "- " + s.SinsName + '\n';
+        }
+		return temp;
+
+    }
 }
 
