@@ -56,7 +56,7 @@ public class SinsScriptableObject : ScriptableObject
 				--i;
 				continue;
 			}
-			Debug.Log("I value " + i + " The hell number : " + hellNumberTemp + "  Sins name : " + tempName);
+			//Debug.Log("I value " + i + " The hell number : " + hellNumberTemp + "  Sins name : " + tempName);
 			MiniSins temp = new MiniSins(hellNumberTemp, tempName);
 			tempSins.Add(temp);
 		}

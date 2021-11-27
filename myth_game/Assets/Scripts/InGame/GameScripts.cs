@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameScripts : MonoBehaviour
 {
+
+    bool m_mouseDrag = false;
     bool m_isStampClicked;
+    bool m_isBookClicked;
     
     Vector3 m_initialStampPosition;
     GameObject m_stampGameObject;
     GameObject m_stampInk;
     GameObject m_stampLevel;
-
+    GameObject m_closeBookOfRecord;
     //Timer
     public float m_dailyTimer;
     [Space()]
@@ -61,9 +64,21 @@ public class GameScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfMouseDrag();
         StampCalculation();
 
+
         WinningAndLosingCondition();
+    }
+
+    void CheckIfMouseDrag()
+    {
+        if (!m_mouseDrag && Input.GetMouseButtonDown(0))
+            m_mouseDrag = true;
+
+
+        if (Input.GetMouseButtonUp(0))
+            m_mouseDrag = false;
     }
 
     void WinningAndLosingCondition()
@@ -95,6 +110,28 @@ public class GameScripts : MonoBehaviour
             StampLogic();
         }
 
+        if (m_isBookClicked)
+        {
+
+            if (m_mouseDrag)
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                m_closeBookOfRecord.transform.position = new Vector2(mousePos.x, mousePos.y);
+            }
+            else
+            {
+
+                if (!GameManager.instance.variables.m_currentOpenBookOfRecord)
+                    GameManager.instance.InstantiateOpenBookEvent();
+                else
+                    GameManager.instance.variables.m_currentOpenBookOfRecord.gameObject.SetActive(true);
+
+                m_closeBookOfRecord = null;
+                m_isBookClicked = false;
+
+            }
+
+        }
         //Check for raycast on which gameobject is clicked
         else if (Input.GetMouseButtonDown(0) && !m_isStampClicked)
         {
@@ -115,8 +152,8 @@ public class GameScripts : MonoBehaviour
                 {
                     if (hit.collider.gameObject.GetComponent<BookOfRecords>())
                     {
-                        GameManager.instance.InstantiateOpenBookEvent();
-
+                        m_isBookClicked = true;
+                        m_closeBookOfRecord = hit.collider.gameObject;
                     }
                 }
                 //Check if click on stamp
@@ -151,19 +188,30 @@ public class GameScripts : MonoBehaviour
             //  If left click is detected within stamp boundary, create ink 
             //else 
             //  return stamp position
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 InstantiateInkOnBook();
             }
 
             //Check if left click is detected on stamp, move the stamp following mouse
-            if (m_isStampClicked)
+            if (m_mouseDrag && m_isStampClicked)
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 m_stampGameObject.transform.position = new Vector2(mousePos.x, mousePos.y);
 
             }
+            else
+            {
+                m_isStampClicked = false;
+                if (m_stampGameObject != null)
+                {
+                    m_stampGameObject.transform.position = m_initialStampPosition;
+                    m_stampGameObject = null;
+                }
+            }
         }
+
+
     }
 
     //Instantiate if Ink is on book
@@ -175,9 +223,12 @@ public class GameScripts : MonoBehaviour
         if (GameManager.instance.variables.m_stampWithinBoundary && GameManager.instance.variables.m_currentOpenBookOfRecord)
         {
             //Create the ink
-            GameManager.instance.variables.m_currentInkUsed = m_stampInk = Instantiate(m_stampInkPrefab);
+            m_stampInk = Instantiate(m_stampInkPrefab);
+            
             //Set ink to current stamp position
             m_stampInk.transform.position = m_stampGameObject.transform.position;
+            m_stampInk.transform.parent = GameManager.instance.variables.m_currentOpenBookOfRecord.transform;
+
             //Set ink sprite to current stamp sprite
             if (m_stampInk.GetComponent<SpriteRenderer>() && m_stampGameObject.GetComponent<StampInk>())
             {

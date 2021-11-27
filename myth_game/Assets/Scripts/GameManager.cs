@@ -34,12 +34,17 @@ public class GameManager : MonoBehaviour
     public void_event ResetVariablesEvent;
 
     //Game level variables
+    [Space()]
     public int m_GameLevel = 1;
 
+    [Space()]
+    [Space()]
     public int m_Level1MaxStamp = 4;
     public int m_Level2MaxStamp = 7;
     public int m_Level3MaxStamp = 10;
 
+    [Space()]
+    [Space()]
     public int m_Level1MaxRecords = 0;
     public int m_Level2MaxRecords = 0;
     public int m_Level3MaxRecords = 0;
@@ -71,6 +76,8 @@ public class GameManager : MonoBehaviour
         //Customer variables
         //Check if customer being served
         public bool m_isServingCustomer = false;
+        public List<SinsScriptableObject.MiniSins> sins;
+
 
         //Current customer bookOfRecord
         public GameObject m_currentBookOfRecord = null;

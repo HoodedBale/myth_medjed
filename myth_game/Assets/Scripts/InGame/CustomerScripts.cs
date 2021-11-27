@@ -90,9 +90,7 @@ public class CustomerScripts : MonoBehaviour
 
     bool CheckIfSentCorrectly()
 	{
-
-        //GameManager.instance.variables.m_stampedNumber;
-        return true;
+        return false;
 	}
 
     void GenerateBookOfRecordInfo(GameObject book)

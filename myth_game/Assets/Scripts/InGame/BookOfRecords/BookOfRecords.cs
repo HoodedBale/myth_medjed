@@ -43,10 +43,10 @@ public class BookOfRecords : MonoBehaviour
                 int MaxHellNumber = GameManager.instance.m_Level1MaxStamp;
                 int MaxHellRecord = GameManager.instance.m_Level1MaxRecords;
                 List<SinsScriptableObject.MiniSins> minisins = GameManager.instance.m_sinsObject.GenerateSinList(MaxHellNumber, MaxHellRecord);
-                foreach (var sins in minisins)
-                {
-                    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
-                }
+                //foreach (var sins in minisins)
+                //{
+                //    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
+                //}
                 temp.m_characterRecords.text = GameManager.instance.m_sinsObject.ConvertListOfSinsToString(minisins); 
 
             }
@@ -55,10 +55,10 @@ public class BookOfRecords : MonoBehaviour
                 int MaxHellNumber = GameManager.instance.m_Level2MaxStamp;
                 int MaxHellRecord = GameManager.instance.m_Level2MaxRecords;
                 List<SinsScriptableObject.MiniSins> minisins = GameManager.instance.m_sinsObject.GenerateSinList(MaxHellNumber, MaxHellRecord);
-                foreach (var sins in minisins)
-                {
-                    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
-                }
+                //foreach (var sins in minisins)
+                //{
+                //    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
+                //}
                 temp.m_characterRecords.text = GameManager.instance.m_sinsObject.ConvertListOfSinsToString(minisins);
             }
             else if (GameManager.instance.m_GameLevel == 3)
@@ -67,10 +67,10 @@ public class BookOfRecords : MonoBehaviour
                 int MaxHellRecord = GameManager.instance.m_Level3MaxRecords;
                 //GameManager.instance.m_sinsObject.GenerateSinList(MaxHellNumber, MaxHellRecord,true);
                 List<SinsScriptableObject.MiniSins> minisins = GameManager.instance.m_sinsObject.GenerateSinList(MaxHellNumber, MaxHellRecord,true);
-                foreach (var sins in minisins)
-                {
-                    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
-                }
+                //foreach (var sins in minisins)
+                //{
+                //    Debug.Log("The hell number :" + sins.m_hellNumber + "  The Sins :" + sins.SinsName);
+                //}
                 temp.m_characterRecords.text = GameManager.instance.m_sinsObject.ConvertListOfSinsToString(minisins);
             }
 

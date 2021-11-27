@@ -17,4 +17,9 @@ public class OpenBookOfRecords : MonoBehaviour
     {
         m_canvas.worldCamera = Camera.main;
     }
+
+    public void CloseBook()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
