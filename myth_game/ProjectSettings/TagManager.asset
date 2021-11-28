@@ -8,6 +8,7 @@ TagManager:
   - Stamp
   - OpenBookOfRecords
   - GuideBook
+  - ReturnBookCollider
   layers:
   - Default
   - TransparentFX

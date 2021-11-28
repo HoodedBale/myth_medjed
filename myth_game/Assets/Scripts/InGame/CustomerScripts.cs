@@ -28,6 +28,7 @@ public class CustomerScripts : MonoBehaviour
     {
         tempBookOfRecord = null;
         tempSpirit = null;
+        GameManager.instance.ReturnBookToCustomerEvent += MoveSpiritToTheEndPoint;
     }
 
     // Update is called once per frame
@@ -44,9 +45,6 @@ public class CustomerScripts : MonoBehaviour
             tempSpirit = Instantiate(m_spiritPrefab);
             tempSpirit.transform.position = m_spiritSpawnLocation.position;
 
-            ////Generate the book of record info
-            //GenerateBookOfRecordInfo(tempBookOfRecord);
-
             //Currently serving customer
             GameManager.instance.variables.m_isServingCustomer = true;
         }
@@ -58,48 +56,14 @@ public class CustomerScripts : MonoBehaviour
             tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordStopLocation.position, step);
             tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritStopLocation.position, step);
         }
-
-
-        //Check if customer is sent to the right location ( Just stamped on book )
-        if(GameManager.instance.variables.m_isInkedOnBook)
-		{
-			if (CheckIfSentCorrectly())
-			{
-                ////Animation
-                if (tempBookOfRecord)
-                {
-                //    tempBookOfRecord.transform.position = Vector3.MoveTowards(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position, step);
-                    tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritEndLocation.position, step);
-                }
-
-
-                if (Vector3.Distance(tempBookOfRecord.transform.position, m_bookOfRecordSpawnLocation.position) < 0.1f)
-                {
-					GameManager.instance.CustomerServedCorrectlyEvent();
-					GameManager.instance.DestroyInstantiateEvent();
-				}
-
-            }
-            else
-			{
-
-			}
-		}
-
     }
 
-    bool CheckIfSentCorrectly()
+
+    void MoveSpiritToTheEndPoint()
 	{
-        return false;
-	}
+        float step = speed * Time.deltaTime;
+        tempSpirit.transform.position = Vector3.MoveTowards(tempSpirit.transform.position, m_spiritEndLocation.position, step);
+    }
 
-    void GenerateBookOfRecordInfo(GameObject book)
-	{
-		if (book)
-		{
-
-
-
-		}
-	}
+    
 }

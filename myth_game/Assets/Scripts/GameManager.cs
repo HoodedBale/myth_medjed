@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public void_event BookOfRecordsClickedEvent;
     public void_event CustomerServedCorrectlyEvent;
     public void_event DestroyInstantiateEvent;
+    public void_event ReturnBookToCustomerEvent;
 
     public void_event InstantiateOpenBookEvent;
     
@@ -76,7 +77,8 @@ public class GameManager : MonoBehaviour
         //Customer variables
         //Check if customer being served
         public bool m_isServingCustomer = false;
-        public List<SinsScriptableObject.MiniSins> sins;
+        public List<SinsScriptableObject.MiniSins> m_sins = new List<SinsScriptableObject.MiniSins>();
+        public List<int> m_inkStamped = new List<int>();
 
 
         //Current customer bookOfRecord
@@ -88,7 +90,7 @@ public class GameManager : MonoBehaviour
         public GameObject m_currentInkUsed = null;
         public int m_stampedNumber;
         public bool m_isInkedOnBook;
-
+        public bool WithinBookSubmissionCollider = false;
 
     }
 

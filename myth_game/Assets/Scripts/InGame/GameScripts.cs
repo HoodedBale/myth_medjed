@@ -120,11 +120,18 @@ public class GameScripts : MonoBehaviour
             }
             else
             {
-
-                if (!GameManager.instance.variables.m_currentOpenBookOfRecord)
-                    GameManager.instance.InstantiateOpenBookEvent();
+                if (!GameManager.instance.variables.WithinBookSubmissionCollider)
+                {
+                    if (!GameManager.instance.variables.m_currentOpenBookOfRecord)
+                        GameManager.instance.InstantiateOpenBookEvent();
+                    else
+                        GameManager.instance.variables.m_currentOpenBookOfRecord.gameObject.SetActive(true);
+                }
                 else
-                    GameManager.instance.variables.m_currentOpenBookOfRecord.gameObject.SetActive(true);
+				{
+                    GameManager.instance.ReturnBookToCustomerEvent();
+
+                }
 
                 m_closeBookOfRecord = null;
                 m_isBookClicked = false;
@@ -238,7 +245,7 @@ public class GameScripts : MonoBehaviour
                 string spriteName = m_stampGameObject.GetComponent<StampInk>().stampInk.name;
 
                 //This is to set which ink is used, get the sprite name last number: eg: ink_2, we take in 2
-                GameManager.instance.variables.m_stampedNumber = int.Parse(spriteName.Substring(spriteName.IndexOf('_') + 1));
+                GameManager.instance.variables.m_inkStamped.Add(int.Parse(spriteName.Substring(spriteName.IndexOf('_') + 1)));
                 GameManager.instance.variables.m_isInkedOnBook = true;
             }
 
