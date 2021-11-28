@@ -38,7 +38,6 @@ public class CustomerScripts : MonoBehaviour
         //If there is no customer being served, instantiate a new book of record
         if(!GameManager.instance.variables.m_isServingCustomer)
 		{
-            Debug.Log("I AN ER");
             //Create new book of record
             tempBookOfRecord = GameManager.instance.variables.m_currentBookOfRecord = Instantiate(m_bookOfRecordPrefab);
             tempBookOfRecord.transform.position = m_bookOfRecordSpawnLocation.position;
@@ -64,7 +63,6 @@ public class CustomerScripts : MonoBehaviour
         //check if character move away
         if (m_moveCharacter && tempSpirit)
         {
-            Debug.Log("I AM BEING DESTROYed");
             if (Vector3.Distance(tempSpirit.transform.position, m_spiritEndLocation.position) < 0.1f)
             {
                 m_moveCharacter = false;
