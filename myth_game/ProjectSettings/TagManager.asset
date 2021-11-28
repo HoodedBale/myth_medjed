@@ -61,6 +61,9 @@ TagManager:
   - name: Stamps&Guide
     uniqueID: 1818304889
     locked: 0
+  - name: TextBox
+    uniqueID: 1945829029
+    locked: 0
   - name: Options
     uniqueID: 184254209
     locked: 0

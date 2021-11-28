@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f3059e1f92cb844b80d156ca8a4241, type: 3}
+  m_Name: DialogueScriptable
+  m_EditorClassIdentifier: 
+  m_dialogueOption:
+  - type: 1
+    options:
+    - 'Good work ! '
+    - Nice !
+    - Hell Yeah !
+    - To hell with you ! Good job !
+  - type: 2
+    options:
+    - Do your job properly before I'll send you to hell myself !
+    - Are you serious? Can't you do your job properly?
+    - Even with a guide book, you can't do your job properly !
+    - What the hell? You used the wrong stamp !
+  - type: 3
+    options:
+    - Stamp on the book before sending them away !
+    - Did you even read the manual? Stamp on the book !
+  - type: 4
+    options:
+    - 'Hell has been overrun by souls because of you ! '
+    - You are fired. Try again.
+  - type: 5
+    options:
+    - Seems you are competent, I will increase your workload for tomorrow.
+    - You are getting hang of it. Good work.

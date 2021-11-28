@@ -25,6 +25,7 @@ public class SinsScriptableObject : ScriptableObject
 		}
 	}
 
+
 	//TOtal 9
 	//Hell element[0] = number 2, [1] = 3, ...., [8] = 10, 
 

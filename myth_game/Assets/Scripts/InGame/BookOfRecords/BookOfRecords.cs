@@ -88,15 +88,15 @@ public class BookOfRecords : MonoBehaviour
 
     void ReturnTheBookOfRecord()
 	{
-		foreach (var item in GameManager.instance.variables.m_sins)
-		{
-            Debug.Log("Hell Number : " + item.m_hellNumber);
-		}
+		//foreach (var item in GameManager.instance.variables.m_sins)
+		//{
+  //          Debug.Log("Hell Number : " + item.m_hellNumber);
+		//}
 
-        foreach (var item in GameManager.instance.variables.m_inkStamped)
-        {
-            Debug.Log("Stamp Number : " + item);
-        }
+  //      foreach (var item in GameManager.instance.variables.m_inkStamped)
+  //      {
+  //          Debug.Log("Stamp Number : " + item);
+  //      }
 
         if (GameManager.instance.variables.m_inkStamped.Count != 0)
         {
@@ -104,19 +104,21 @@ public class BookOfRecords : MonoBehaviour
             if (GameManager.instance.m_sinsObject.CompareWithList(GameManager.instance.variables.m_sins, GameManager.instance.variables.m_inkStamped))
             {
                 Debug.Log("Correct");
-                //GameManager.instance.CustomerServedCorrectlyEvent();
-                //GameManager.instance.DestroyInstantiateEvent();
+                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.CORRECT;
+                GameManager.instance.StartDialogueEvent();
             }
             else
             {
-
                 Debug.Log("Wrong");
-
+                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.WRONG;
+                GameManager.instance.StartDialogueEvent();
             }
         }
         else
 		{
             Debug.Log("havent stamp yet");
-		}
+            GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NOSTAMP;
+            GameManager.instance.StartDialogueEvent();
+        }
     }
 }

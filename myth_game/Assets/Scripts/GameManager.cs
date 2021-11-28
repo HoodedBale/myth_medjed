@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
+using TMPro;
+
 public class GameManager : MonoBehaviour
 {
     public SinsScriptableObject m_sinsObject;
@@ -11,6 +13,16 @@ public class GameManager : MonoBehaviour
         get
         {
             return m_sinsObject;
+        }
+    }
+
+    public DialogueScriptableObject m_dialogueObject;
+
+    public DialogueScriptableObject DialogueVariable
+    {
+        get
+        {
+            return m_dialogueObject;
         }
     }
 
@@ -34,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     public void_event ResetVariablesEvent;
 
+    public void_event StartDialogueEvent;
+
     //Game level variables
     [Space()]
     public int m_GameLevel = 1;
@@ -49,6 +63,13 @@ public class GameManager : MonoBehaviour
     public int m_Level1MaxRecords = 0;
     public int m_Level2MaxRecords = 0;
     public int m_Level3MaxRecords = 0;
+
+
+    [Space()]
+    [Space()]
+    public TMP_Text m_Text = null;
+    public GameObject m_Textbox = null;
+
 
 
     public class GameVariables
@@ -92,6 +113,10 @@ public class GameManager : MonoBehaviour
         public bool m_isInkedOnBook;
         public bool WithinBookSubmissionCollider = false;
 
+
+        //Type of dialogue
+        public DialogueScriptableObject.DIALOGUETYPE m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NONE;
+
     }
 
     public GameVariables variables
@@ -119,6 +144,7 @@ public class GameManager : MonoBehaviour
         CustomerServedCorrectlyEvent += ServedCustomerCorrectly;
         DestroyInstantiateEvent += DestroyBookAndInk;
         ResetVariablesEvent += ResetVariable;
+        StartDialogueEvent += SetDialogueActive;
     }
 
     public static GameManager GetInstance()
@@ -136,7 +162,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        m_Textbox = GameObject.Find("DialogueBox");
+        if(m_Textbox)
+        {
+            m_Text = m_Textbox.transform.Find("DialogueName").GetComponent<TMP_Text>();
+        }
+        m_Textbox.SetActive(false); 
     }
 
     void ResetVariable()
@@ -162,6 +193,12 @@ public class GameManager : MonoBehaviour
         if (variables.m_currentOpenBookOfRecord)
             Destroy(variables.m_currentOpenBookOfRecord);
 
+    }
+
+
+    void SetDialogueActive()
+    {
+        m_Textbox.SetActive(true);
     }
 
 

@@ -90,12 +90,20 @@ public class GameScripts : MonoBehaviour
             if (GameManager.instance.variables.m_currentPlayerQuota != GameManager.instance.variables.m_quotaNumberToReach)
             {
                 GameManager.instance.ResetVariablesEvent();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
+                GameManager.instance.StartDialogueEvent();
+
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
 
             }
             else
             {
                 //WIn game
+                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
+                GameManager.instance.StartDialogueEvent();
             }
 		}
 
