@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject m_levelManager;
+    public bool IsInputEnabled = true;
+
     public SinsScriptableObject m_sinsObject;
 
     public SinsScriptableObject SinsVariables
@@ -35,6 +39,10 @@ public class GameManager : MonoBehaviour
     public void_event CustomerServedCorrectlyEvent;
     public void_event DestroyInstantiateEvent;
     public void_event ReturnBookToCustomerEvent;
+    public void_event ShrinkAndRemoveBookEvent;
+    public void_event CheckCustomerStampEvent;
+
+    public void_event MoveTheLineEvent;
 
     public void_event InstantiateOpenBookEvent;
     
@@ -74,8 +82,6 @@ public class GameManager : MonoBehaviour
 
     public class GameVariables
     {
-
-
         //Countdown timer
         public float m_WorkTimer = 0.0f;
         public bool m_isWorkTimerRunning = false;
@@ -116,6 +122,7 @@ public class GameManager : MonoBehaviour
 
         //Type of dialogue
         public DialogueScriptableObject.DIALOGUETYPE m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NONE;
+        public bool m_dialogueTimerEnded = true;
 
     }
 
@@ -134,12 +141,16 @@ public class GameManager : MonoBehaviour
         if (m_instance == null)
         {
             m_instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(this.gameObject);
         }
+
+
+        m_levelManager = GameObject.Find("LevelManager");
+        m_GameLevel = m_levelManager.GetComponent<LevelManager>().m_levelChosen;
 
         CustomerServedCorrectlyEvent += ServedCustomerCorrectly;
         DestroyInstantiateEvent += DestroyBookAndInk;
@@ -163,13 +174,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         m_Textbox = GameObject.Find("DialogueBox");
-        if(m_Textbox)
+        if (m_Textbox)
         {
             m_Text = m_Textbox.transform.Find("DialogueName").GetComponent<TMP_Text>();
         }
-        m_Textbox.SetActive(false); 
+        m_Textbox.SetActive(false);
     }
 
+    void Update()
+    {
+
+    }
+    void OnEnable()
+    {
+
+    }
     void ResetVariable()
     {
         m_variables = new GameVariables();
@@ -178,17 +197,10 @@ public class GameManager : MonoBehaviour
     void ServedCustomerCorrectly()
     {
         variables.m_currentPlayerQuota++;
-        variables.m_isServingCustomer = false;
-        variables.m_isInkedOnBook = false;
     }
 
     void DestroyBookAndInk()
     {
-        if (variables.m_currentBookOfRecord)
-            Destroy(variables.m_currentBookOfRecord);
-
-        if (variables.m_currentInkUsed)
-            Destroy(variables.m_currentInkUsed);
 
         if (variables.m_currentOpenBookOfRecord)
             Destroy(variables.m_currentOpenBookOfRecord);

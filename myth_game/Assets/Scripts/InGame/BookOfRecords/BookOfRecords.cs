@@ -13,14 +13,14 @@ public class BookOfRecords : MonoBehaviour
     void OnEnable()
     {
         GameManager.instance.InstantiateOpenBookEvent += InstantiateOpenBookOfRecord;
-        GameManager.instance.ReturnBookToCustomerEvent += ReturnTheBookOfRecord;
+        GameManager.instance.CheckCustomerStampEvent += ReturnTheBookOfRecord;
         this.GetComponent<SpriteRenderer>().sprite = m_bookColor[(int)Random.Range(0.0f, 3.0f)];
     }
 
 	void OnDisable()
 	{
         GameManager.instance.InstantiateOpenBookEvent -= InstantiateOpenBookOfRecord;
-        GameManager.instance.ReturnBookToCustomerEvent -= ReturnTheBookOfRecord;
+        GameManager.instance.CheckCustomerStampEvent -= ReturnTheBookOfRecord;
     }
 
 	// Update is called once per frame
@@ -88,15 +88,15 @@ public class BookOfRecords : MonoBehaviour
 
     void ReturnTheBookOfRecord()
 	{
-		//foreach (var item in GameManager.instance.variables.m_sins)
-		//{
-  //          Debug.Log("Hell Number : " + item.m_hellNumber);
-		//}
+        //foreach (var item in GameManager.instance.variables.m_sins)
+        //{
+        //    Debug.Log("Hell Number : " + item.m_hellNumber);
+        //}
 
-  //      foreach (var item in GameManager.instance.variables.m_inkStamped)
-  //      {
-  //          Debug.Log("Stamp Number : " + item);
-  //      }
+        //foreach (var item in GameManager.instance.variables.m_inkStamped)
+        //{
+        //    Debug.Log("Stamp Number : " + item);
+        //}
 
         if (GameManager.instance.variables.m_inkStamped.Count != 0)
         {
@@ -106,12 +106,49 @@ public class BookOfRecords : MonoBehaviour
                 Debug.Log("Correct");
                 GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.CORRECT;
                 GameManager.instance.StartDialogueEvent();
+                
+
+                //Minus Quota
+                GameManager.instance.CustomerServedCorrectlyEvent();
+
+                //Remove open book
+                GameManager.instance.DestroyInstantiateEvent();
+                
+                //Move spirit away
+                GameManager.instance.ReturnBookToCustomerEvent();
+
+                //Shrink book
+                GameManager.instance.ShrinkAndRemoveBookEvent();
+
+                GameManager.instance.variables.m_sins.Clear();
+                GameManager.instance.variables.m_inkStamped.Clear();
+
+                //Move the line
+                GameManager.instance.MoveTheLineEvent();
+
             }
             else
             {
                 Debug.Log("Wrong");
                 GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.WRONG;
                 GameManager.instance.StartDialogueEvent();
+
+
+                //Remove open book
+                GameManager.instance.DestroyInstantiateEvent();
+
+                //Move spirit away
+                GameManager.instance.ReturnBookToCustomerEvent();
+
+                //Shrink book
+                GameManager.instance.ShrinkAndRemoveBookEvent();
+
+                GameManager.instance.variables.m_sins.Clear();
+                GameManager.instance.variables.m_inkStamped.Clear();
+
+                //Move the line
+                GameManager.instance.MoveTheLineEvent();
+
             }
         }
         else
@@ -119,6 +156,9 @@ public class BookOfRecords : MonoBehaviour
             Debug.Log("havent stamp yet");
             GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NOSTAMP;
             GameManager.instance.StartDialogueEvent();
+            //GameManager.instance.ReturnBookToCustomerEvent();
+            //GameManager.instance.CustomerServedCorrectlyEvent();
+            //GameManager.instance.DestroyInstantiateEvent();
         }
     }
 }

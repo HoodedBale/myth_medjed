@@ -9,7 +9,8 @@ public class GameScripts : MonoBehaviour
     bool m_mouseDrag = false;
     bool m_isStampClicked;
     bool m_isBookClicked;
-    
+    bool m_onceDialogue = false;
+
     Vector3 m_initialStampPosition;
     GameObject m_stampGameObject;
     GameObject m_stampInk;
@@ -64,8 +65,11 @@ public class GameScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckIfMouseDrag();
-        StampCalculation();
+        if (GameManager.instance.IsInputEnabled)
+        {
+            CheckIfMouseDrag();
+            StampCalculation();
+        }
 
 
         WinningAndLosingCondition();
@@ -86,24 +90,46 @@ public class GameScripts : MonoBehaviour
         //Check if timer runs out 
         if(GameManager.instance.variables.m_timerRunsOut)
 		{
+            GameManager.instance.IsInputEnabled = false;
             //If quota not met, reset scene
             if (GameManager.instance.variables.m_currentPlayerQuota != GameManager.instance.variables.m_quotaNumberToReach)
             {
-                GameManager.instance.ResetVariablesEvent();
 
-                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
-                GameManager.instance.StartDialogueEvent();
+                if (!m_onceDialogue)
+                {
+                    GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
+                    GameManager.instance.StartDialogueEvent();
+                    m_onceDialogue = true;
 
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+                if (GameManager.instance.variables.m_dialogueTimerEnded)
+                {
+                    m_onceDialogue = false;
+                    GameManager.instance.IsInputEnabled = true;
+                    GameManager.instance.ResetVariablesEvent();
+                    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
-
+                }
 
             }
             else
             {
                 //WIn game
-                GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
-                GameManager.instance.StartDialogueEvent();
+                if (!m_onceDialogue)
+                {
+                    GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
+                    GameManager.instance.StartDialogueEvent();
+                }
+                if (GameManager.instance.variables.m_dialogueTimerEnded)
+                {
+                    GameManager.instance.IsInputEnabled = true;
+                    m_onceDialogue = false;
+                }
+                //if (GameManager.instance.variables.m_dialogueTimerEnded)
+                //{
+                //    GameManager.instance.ResetVariablesEvent();
+                //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+                //}
             }
 		}
 
@@ -137,7 +163,7 @@ public class GameScripts : MonoBehaviour
                 }
                 else
 				{
-                    GameManager.instance.ReturnBookToCustomerEvent();
+                    GameManager.instance.CheckCustomerStampEvent();
 
                 }
 

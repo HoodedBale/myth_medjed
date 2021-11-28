@@ -25,6 +25,7 @@ public class FigureQueue : MonoBehaviour
     void Start()
     {
         FillQueue();
+        GameManager.instance.MoveTheLineEvent += MoveLine;
     }
 
     // Update is called once per frame
@@ -35,11 +36,6 @@ public class FigureQueue : MonoBehaviour
             MoveLine();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log(MiscScripts.GeneratePresetName());
-
-        }
     }
 
     Figure CreateFigure()

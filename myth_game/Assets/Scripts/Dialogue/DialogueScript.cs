@@ -6,8 +6,12 @@ public class DialogueScript : MonoBehaviour
 {
     DialogueScriptableObject scripts;
     public float totalTimerForDialogue = 2.0f;
+    public float WinningLosingDialogue = 5.0f;
+
     float m_timerForDialogue = 2.0f;
+    
     bool m_dialogueCalled = false;
+    bool m_winningLosingDialogueCalled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,23 +25,49 @@ public class DialogueScript : MonoBehaviour
     {
         if(m_dialogueCalled)
         {
-            if (m_timerForDialogue > 0.0f)
+            if (!m_winningLosingDialogueCalled)
             {
-                m_timerForDialogue -= Time.deltaTime;
+                if (m_timerForDialogue > 0.0f)
+                {
+                    m_timerForDialogue -= Time.deltaTime;
+                }
+                else
+                {
+                    m_dialogueCalled = false;
+                    GameManager.instance.m_Textbox.SetActive(false);
+                }
             }
             else
             {
-                m_dialogueCalled = false;
-                m_timerForDialogue = totalTimerForDialogue;
-                GameManager.instance.m_Textbox.SetActive(false);
+                if (m_timerForDialogue > 0.0f)
+                {
+                    m_timerForDialogue -= Time.deltaTime;
+                }
+                else
+                {
+                    m_dialogueCalled = false;
+                    GameManager.instance.m_Textbox.SetActive(false);
+                    GameManager.instance.variables.m_dialogueTimerEnded = true;
+                    m_winningLosingDialogueCalled = false;
+                }
             }
-               
         }
     }
 
     void GenerateDialogue()
     {
         GameManager.instance.m_Text.text = GameManager.instance.m_dialogueObject.GetRandomDialogueOfType(GameManager.instance.variables.m_dialogueType);
+
+        if (GameManager.instance.variables.m_dialogueType == DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL ||
+           GameManager.instance.variables.m_dialogueType == DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS)
+        {
+            m_timerForDialogue = WinningLosingDialogue;
+            m_winningLosingDialogueCalled = true;
+            GameManager.instance.variables.m_dialogueTimerEnded = false;
+        }
+        else
+            m_timerForDialogue = totalTimerForDialogue;
+
         m_dialogueCalled = true;
     }
 }
