@@ -94,7 +94,6 @@ public class GameScripts : MonoBehaviour
             //If quota not met, reset scene
             if (GameManager.instance.variables.m_currentPlayerQuota != GameManager.instance.variables.m_quotaNumberToReach)
             {
-
                 if (!m_onceDialogue)
                 {
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
@@ -125,11 +124,7 @@ public class GameScripts : MonoBehaviour
                     GameManager.instance.IsInputEnabled = true;
                     m_onceDialogue = false;
                 }
-                //if (GameManager.instance.variables.m_dialogueTimerEnded)
-                //{
-                //    GameManager.instance.ResetVariablesEvent();
-                //    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-                //}
+
             }
 		}
 

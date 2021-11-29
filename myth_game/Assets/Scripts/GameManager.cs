@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public void_event ShrinkAndRemoveBookEvent;
     public void_event CheckCustomerStampEvent;
 
+    public void_event StartTheDayNew;
+    public void_event OpenEnvelopeActive;
+    
     public void_event MoveTheLineEvent;
 
     public void_event InstantiateOpenBookEvent;
@@ -78,7 +81,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text m_Text = null;
     public GameObject m_Textbox = null;
 
-
+    [Space()]
+    public GameObject m_closeEnvelope = null;
 
     public class GameVariables
     {
@@ -103,7 +107,7 @@ public class GameManager : MonoBehaviour
 
         //Customer variables
         //Check if customer being served
-        public bool m_isServingCustomer = false;
+        public bool m_isServingCustomer = true;
         public List<SinsScriptableObject.MiniSins> m_sins = new List<SinsScriptableObject.MiniSins>();
         public List<int> m_inkStamped = new List<int>();
 
@@ -119,11 +123,13 @@ public class GameManager : MonoBehaviour
         public bool m_isInkedOnBook;
         public bool WithinBookSubmissionCollider = false;
 
-
         //Type of dialogue
         public DialogueScriptableObject.DIALOGUETYPE m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NONE;
         public bool m_dialogueTimerEnded = true;
 
+
+        //New day
+        public bool m_newStartDay = true;
     }
 
     public GameVariables variables
@@ -156,6 +162,7 @@ public class GameManager : MonoBehaviour
         DestroyInstantiateEvent += DestroyBookAndInk;
         ResetVariablesEvent += ResetVariable;
         StartDialogueEvent += SetDialogueActive;
+        OpenEnvelopeActive += SetOpenEnvelopeActive;
     }
 
     public static GameManager GetInstance()
@@ -207,7 +214,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-
+    void SetOpenEnvelopeActive()
+	{
+        m_closeEnvelope.SetActive(!m_closeEnvelope.activeSelf);
+	}
     void SetDialogueActive()
     {
         m_Textbox.SetActive(true);

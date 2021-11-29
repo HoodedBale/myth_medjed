@@ -36,7 +36,7 @@ public class CustomerScripts : MonoBehaviour
     void Update()
     {
         //If there is no customer being served, instantiate a new book of record
-        if(!GameManager.instance.variables.m_isServingCustomer)
+        if(!GameManager.instance.variables.m_isServingCustomer && !GameManager.instance.variables.m_newStartDay)
 		{
             //Create new book of record
             tempBookOfRecord = GameManager.instance.variables.m_currentBookOfRecord = Instantiate(m_bookOfRecordPrefab);

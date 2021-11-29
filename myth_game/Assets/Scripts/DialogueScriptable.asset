@@ -18,7 +18,7 @@ MonoBehaviour:
     - 'Good work ! '
     - Nice !
     - Hell Yeah !
-    - To hell with you ! Good job !
+    - ' Good job !'
   - type: 2
     options:
     - Do your job properly before I'll send you to hell myself !
@@ -32,7 +32,7 @@ MonoBehaviour:
   - type: 4
     options:
     - 'Hell has been overrun by souls because of you ! '
-    - You are fired. Try again.
+    - Can't believe I hired an incompetent assistant !
   - type: 5
     options:
     - Seems you are competent, I will increase your workload for tomorrow.

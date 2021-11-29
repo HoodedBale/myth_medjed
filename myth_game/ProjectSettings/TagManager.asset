@@ -9,6 +9,8 @@ TagManager:
   - OpenBookOfRecords
   - GuideBook
   - ReturnBookCollider
+  - CloseEnvelope
+  - OpenEnvelope
   layers:
   - Default
   - TransparentFX
