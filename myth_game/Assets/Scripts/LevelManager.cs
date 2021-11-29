@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
 		{
             if(item.m_Level == m_levelChosen)
 			{
-                return item.m_quotaPerDay[m_currentDay];
+                return item.m_quotaPerDay[m_currentDay - 1];
 			}
 
 		}

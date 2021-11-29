@@ -71,6 +71,8 @@ public class GameScripts : MonoBehaviour
             StampCalculation();
         }
 
+        if (Input.GetKeyDown(KeyCode.M))
+            GameManager.instance.variables.m_currentPlayerQuota++;
 
         WinningAndLosingCondition();
     }
@@ -92,7 +94,7 @@ public class GameScripts : MonoBehaviour
 		{
             GameManager.instance.IsInputEnabled = false;
             //If quota not met, reset scene
-            if (GameManager.instance.variables.m_currentPlayerQuota != GameManager.instance.variables.m_quotaNumberToReach)
+            if (GameManager.instance.variables.m_quotaNumberToReach - GameManager.instance.variables.m_currentPlayerQuota > 0)
             {
                 if (!m_onceDialogue)
                 {
@@ -106,7 +108,8 @@ public class GameScripts : MonoBehaviour
                     m_onceDialogue = false;
                     GameManager.instance.IsInputEnabled = true;
                     GameManager.instance.ResetVariablesEvent();
-                    Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+                    //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+                    GameManager.instance.LosingPromptEvent();
 
                 }
 
@@ -118,11 +121,15 @@ public class GameScripts : MonoBehaviour
                 {
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
                     GameManager.instance.StartDialogueEvent();
+                    m_onceDialogue = true;
                 }
                 if (GameManager.instance.variables.m_dialogueTimerEnded)
                 {
                     GameManager.instance.IsInputEnabled = true;
+                    GameManager.instance.ResetVariablesEvent();
                     m_onceDialogue = false;
+                    GameManager.instance.WinningPromptEvent();
+
                 }
 
             }

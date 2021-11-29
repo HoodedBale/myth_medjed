@@ -1433,10 +1433,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelChosen: 0
-  m_currentDay: 0
+  m_currentDay: 1
   m_quotaPerDay:
   - m_Level: 1
-    m_quotaPerDay: 050000000700000009000000
+    m_quotaPerDay: 04000000080000000a000000
   - m_Level: 2
     m_quotaPerDay: 050000000700000009000000
   - m_Level: 3

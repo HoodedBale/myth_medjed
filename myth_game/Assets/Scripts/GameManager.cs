@@ -41,14 +41,15 @@ public class GameManager : MonoBehaviour
     public void_event ReturnBookToCustomerEvent;
     public void_event ShrinkAndRemoveBookEvent;
     public void_event CheckCustomerStampEvent;
+    public void_event IncrementDay;
 
-    public void_event StartTheDayNew;
+    public void_event StartTheDayNewEvent;
     public void_event OpenEnvelopeActive;
-    
+
     public void_event MoveTheLineEvent;
 
     public void_event InstantiateOpenBookEvent;
-    
+
     //guidebook
     public void_event InstantiateOpenGuideBookEvent;
 
@@ -58,6 +59,9 @@ public class GameManager : MonoBehaviour
     public void_event ResetVariablesEvent;
 
     public void_event StartDialogueEvent;
+
+    public void_event LosingPromptEvent;
+    public void_event WinningPromptEvent;
 
     //Game level variables
     [Space()]
@@ -83,6 +87,11 @@ public class GameManager : MonoBehaviour
 
     [Space()]
     public GameObject m_closeEnvelope = null;
+
+    [Space()]
+    [Space()]
+    public GameObject LosingMenu = null;
+    public GameObject WinningMenu = null;
 
     public class GameVariables
     {
@@ -163,6 +172,10 @@ public class GameManager : MonoBehaviour
         ResetVariablesEvent += ResetVariable;
         StartDialogueEvent += SetDialogueActive;
         OpenEnvelopeActive += SetOpenEnvelopeActive;
+        StartTheDayNewEvent += StartNewDay;
+        IncrementDay += IncrementDayValue;
+        LosingPromptEvent += LosingPrompt;
+        WinningPromptEvent += WinningPrompt;
     }
 
     public static GameManager GetInstance()
@@ -215,14 +228,70 @@ public class GameManager : MonoBehaviour
     }
 
     void SetOpenEnvelopeActive()
-	{
+    {
         m_closeEnvelope.SetActive(!m_closeEnvelope.activeSelf);
-	}
+    }
     void SetDialogueActive()
     {
         m_Textbox.SetActive(true);
     }
 
+    void IncrementDayValue()
+    {
+        ++m_levelManager.GetComponent<LevelManager>().m_currentDay;
+    }
 
+    void StartNewDay()
+    {
+        GameManager.instance.variables.m_newStartDay = false;
+        GameManager.instance.variables.m_isServingCustomer = false;
+        GameManager.instance.variables.m_isWorkTimerRunning = true;
+
+    }
+
+    void LosingPrompt()
+    {
+        LosingMenu.SetActive(true);
+    }
+
+    void WinningPrompt()
+    {
+        WinningMenu.SetActive(true);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartButton()
+    {
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+    }
+
+    public void NextLevelButton()
+    {
+        GameManager.instance.IncrementDay();
+        if (m_levelManager.GetComponent<LevelManager>().m_currentDay > 3)
+        {
+            if(m_levelManager.GetComponent<LevelManager>().m_levelChosen == 3)
+            {
+                //Winning Scene
+                //m_levelManager.GetComponent<LevelManager>().m_levelChosen = 1;
+                SceneManager.LoadScene("FinalScene");
+            }
+            else
+            {
+                m_levelManager.GetComponent<LevelManager>().m_levelChosen++;
+                m_levelManager.GetComponent<LevelManager>().m_currentDay = 1;
+                Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            }
+            
+        }
+        else
+        {
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        }
+    }
 }
     

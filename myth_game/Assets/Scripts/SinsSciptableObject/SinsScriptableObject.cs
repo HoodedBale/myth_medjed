@@ -114,7 +114,7 @@ public class SinsScriptableObject : ScriptableObject
 		SinsObject temp = HellElement(hellNumber);
 		if (temp != null)
 		{
-			return temp.SinsName[Random.Range(0, temp.SinsName.Count - 1)];
+			return temp.SinsName[Random.Range(0, temp.SinsName.Count)];
 		}
 		return null;
 	}

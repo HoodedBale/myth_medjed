@@ -13,7 +13,6 @@ public class TimerCalculation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.variables.m_isWorkTimerRunning = true;
     }
 
     // Update is called once per frame

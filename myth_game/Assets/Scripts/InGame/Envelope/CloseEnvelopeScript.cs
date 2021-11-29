@@ -27,7 +27,8 @@ public class CloseEnvelopeScript : MonoBehaviour
     [Space()]
     public GameObject m_quotaText;
 
-
+    GameObject theCurrentDay;
+    bool onceActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,76 @@ public class CloseEnvelopeScript : MonoBehaviour
                 }
             }
         }
+
+
+        if (m_openEnvelope.activeSelf)
+        {
+            LevelManager levelManager = GameManager.instance.m_levelManager.GetComponent<LevelManager>();
+            if (m_quotaText.GetComponent<TMP_Text>())
+            {
+                m_quotaText.GetComponent<TMP_Text>().text = levelManager.TheQuotaForToday().ToString() + " Souls";
+            }
+            GameManager.instance.variables.m_quotaNumberToReach = levelManager.TheQuotaForToday();
+
+            if (!onceActive)
+            {
+                //get which level then which day
+                switch (levelManager.m_levelChosen)
+                {
+                    case 1:
+                        switch (levelManager.m_currentDay)
+                        {
+                            case 1:
+                                theCurrentDay = m_day1_1;
+                                break;
+                            case 2:
+                                theCurrentDay = m_day2_1;
+                                break;
+                            case 3:
+                                theCurrentDay = m_day3_1;
+                                break;
+                        }
+
+                        break;
+
+                    case 2:
+                        switch (levelManager.m_currentDay)
+                        {
+                            case 1:
+                                theCurrentDay = m_day1_2;
+                                break;
+                            case 2:
+                                theCurrentDay = m_day2_2;
+                                break;
+                            case 3:
+                                theCurrentDay = m_day3_2;
+                                break;
+                        }
+                        break;
+
+                    case 3:
+                        switch (levelManager.m_currentDay)
+                        {
+                            case 1:
+                                theCurrentDay = m_day1_3;
+                                m_reincarnateHelper.SetActive(true);
+                                break;
+                            case 2:
+                                theCurrentDay = m_day2_3;
+                                m_reincarnateHelper.SetActive(true);
+                                break;
+                            case 3:
+                                theCurrentDay = m_day3_3;
+                                m_reincarnateHelper.SetActive(true);
+                                break;
+                        }
+                        break;
+                }
+                onceActive = true;
+                theCurrentDay.SetActive(true);
+            }
+
+        }
     }
 
     public void StartTheDay()
@@ -64,9 +135,11 @@ public class CloseEnvelopeScript : MonoBehaviour
         if(m_openEnvelope)
             m_openEnvelope.SetActive(false);
 
+        if (m_reincarnateHelper.activeSelf)
+            m_reincarnateHelper.SetActive(false);
 
         this.gameObject.SetActive(false);
-
-        //GameManager.instance.StartTheDayNew();
-	}
+        onceActive = false;
+        GameManager.instance.StartTheDayNewEvent();
+    }
 }
