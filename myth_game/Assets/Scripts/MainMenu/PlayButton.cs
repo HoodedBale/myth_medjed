@@ -18,19 +18,22 @@ public class PlayButton : MonoBehaviour
     public void GoToGameSceneLevel1()
 	{
         levelManager.GetComponent<LevelManager>().m_levelChosen = 1;
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene(sceneName);
+        FadeScreen.screen.LoadScene(sceneName);
 	}
 
     public void GoToGameSceneLevel2()
     {
         levelManager.GetComponent<LevelManager>().m_levelChosen = 2;
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene(sceneName);
+        FadeScreen.screen.LoadScene(sceneName);
     }
 
     public void GoToGameSceneLevel3()
     {
         levelManager.GetComponent<LevelManager>().m_levelChosen = 3;
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene(sceneName);
+        FadeScreen.screen.LoadScene(sceneName);
     }
 
     public void PlayButtonClick()
