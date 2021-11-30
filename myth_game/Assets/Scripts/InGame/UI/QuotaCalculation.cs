@@ -16,6 +16,10 @@ public class QuotaCalculation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_quotaInput.text = (GameManager.instance.variables.m_quotaNumberToReach - GameManager.instance.variables.m_currentPlayerQuota).ToString();
+        int number = GameManager.instance.variables.m_quotaNumberToReach - GameManager.instance.variables.m_currentPlayerQuota;
+        if (number >= 0)
+            m_quotaInput.text = (number).ToString();
+        else
+            m_quotaInput.text = "0";
     }
 }

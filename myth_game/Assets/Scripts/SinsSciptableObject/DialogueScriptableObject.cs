@@ -12,7 +12,8 @@ public class DialogueScriptableObject : ScriptableObject
         WRONG,
         NOSTAMP,
         QUOTAFAIL,
-        QUOTAPASS
+        QUOTAPASS,
+        NODUPLICATESTAMP
     }
 
     [System.Serializable]

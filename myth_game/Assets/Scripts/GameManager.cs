@@ -261,12 +261,14 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        FadeScreen.screen.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartButton()
     {
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        Scene scene = SceneManager.GetActiveScene(); //SceneManager.LoadScene(scene.name);
+        FadeScreen.screen.LoadScene(scene.name);
     }
 
     public void NextLevelButton()
@@ -278,20 +280,23 @@ public class GameManager : MonoBehaviour
             {
                 //Winning Scene
                 //m_levelManager.GetComponent<LevelManager>().m_levelChosen = 1;
-                SceneManager.LoadScene("FinalScene");
+                FadeScreen.screen.LoadScene("FinalScene");
             }
             else
             {
                 m_levelManager.GetComponent<LevelManager>().m_levelChosen++;
                 m_levelManager.GetComponent<LevelManager>().m_currentDay = 1;
-                Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+                Scene scene = SceneManager.GetActiveScene(); 
+                FadeScreen.screen.LoadScene(scene.name);
             }
             
         }
         else
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            Scene scene = SceneManager.GetActiveScene();
+            FadeScreen.screen.LoadScene(scene.name);
         }
+    
     }
 }
     

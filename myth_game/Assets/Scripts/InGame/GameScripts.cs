@@ -101,7 +101,7 @@ public class GameScripts : MonoBehaviour
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
                     GameManager.instance.StartDialogueEvent();
                     m_onceDialogue = true;
-
+                    SoundMan.soundman.PlaySFX(6);
                 }
                 if (GameManager.instance.variables.m_dialogueTimerEnded)
                 {
@@ -122,6 +122,7 @@ public class GameScripts : MonoBehaviour
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
                     GameManager.instance.StartDialogueEvent();
                     m_onceDialogue = true;
+                    SoundMan.soundman.PlaySFX(7);
                 }
                 if (GameManager.instance.variables.m_dialogueTimerEnded)
                 {
@@ -161,7 +162,10 @@ public class GameScripts : MonoBehaviour
                     if (!GameManager.instance.variables.m_currentOpenBookOfRecord)
                         GameManager.instance.InstantiateOpenBookEvent();
                     else
+                    {
+                        SoundMan.soundman.PlaySFX(1);
                         GameManager.instance.variables.m_currentOpenBookOfRecord.gameObject.SetActive(true);
+                    }
                 }
                 else
 				{
@@ -265,6 +269,8 @@ public class GameScripts : MonoBehaviour
         //Need check if within the stamp boundary and if there is openbook
         if (GameManager.instance.variables.m_stampWithinBoundary && GameManager.instance.variables.m_currentOpenBookOfRecord)
         {
+
+            SoundMan.soundman.PlaySFX(0);
             //Create the ink
             m_stampInk = Instantiate(m_stampInkPrefab);
             
@@ -280,9 +286,28 @@ public class GameScripts : MonoBehaviour
                 //Get Sprite Name
                 string spriteName = m_stampGameObject.GetComponent<StampInk>().stampInk.name;
 
+                int stampNumber = int.Parse(spriteName.Substring(spriteName.IndexOf('_') + 1));
+
+                bool check = false;
+                List<int> temp = GameManager.instance.variables.m_inkStamped;
+                for (int i = 0; i < temp.Count ;++i)
+                {
+                    if (temp[i] == stampNumber)
+                        check = true;
+                }
                 //This is to set which ink is used, get the sprite name last number: eg: ink_2, we take in 2
-                GameManager.instance.variables.m_inkStamped.Add(int.Parse(spriteName.Substring(spriteName.IndexOf('_') + 1)));
-                GameManager.instance.variables.m_isInkedOnBook = true;
+                if (check)
+                {
+                    SoundMan.soundman.PlaySFX(2);
+                    GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NODUPLICATESTAMP;
+                    GameManager.instance.StartDialogueEvent();
+                    Destroy(m_stampInk);
+                }
+                else
+                {
+                    GameManager.instance.variables.m_inkStamped.Add(stampNumber);
+                    GameManager.instance.variables.m_isInkedOnBook = true;
+                }
             }
 
         }

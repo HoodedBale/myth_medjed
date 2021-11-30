@@ -33,6 +33,7 @@ public class BookOfRecords : MonoBehaviour
 
     void InstantiateOpenBookOfRecord()
     {
+        SoundMan.soundman.PlaySFX(1);
         GameManager.instance.variables.m_currentOpenBookOfRecord = Instantiate(m_openBook);
         GameManager.instance.variables.m_openBookActive = true;
 
@@ -103,7 +104,7 @@ public class BookOfRecords : MonoBehaviour
             
             if (GameManager.instance.m_sinsObject.CompareWithList(GameManager.instance.variables.m_sins, GameManager.instance.variables.m_inkStamped))
             {
-                Debug.Log("Correct");
+                //Debug.Log("Correct");
                 GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.CORRECT;
                 GameManager.instance.StartDialogueEvent();
                 
@@ -129,7 +130,8 @@ public class BookOfRecords : MonoBehaviour
             }
             else
             {
-                Debug.Log("Wrong");
+                SoundMan.soundman.PlaySFX(2);
+                //Debug.Log("Wrong");
                 GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.WRONG;
                 GameManager.instance.StartDialogueEvent();
 
@@ -153,7 +155,8 @@ public class BookOfRecords : MonoBehaviour
         }
         else
 		{
-            Debug.Log("havent stamp yet");
+            SoundMan.soundman.PlaySFX(2);
+            //Debug.Log("havent stamp yet");
             GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.NOSTAMP;
             GameManager.instance.StartDialogueEvent();
             //GameManager.instance.ReturnBookToCustomerEvent();

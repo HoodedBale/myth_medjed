@@ -19,7 +19,9 @@ public class OpenBookOfRecords : MonoBehaviour
     }
 
     public void CloseBook()
-    {
+    { 
+
+        SoundMan.soundman.PlaySFX(1);
         this.gameObject.SetActive(false);
     }
 }

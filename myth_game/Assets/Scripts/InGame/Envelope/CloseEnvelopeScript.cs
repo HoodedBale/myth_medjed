@@ -32,6 +32,7 @@ public class CloseEnvelopeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundMan.soundman.PlaySFX(3);
         if (GameManager.instance.variables.m_newStartDay)
             this.gameObject.SetActive(true);
     }
@@ -53,7 +54,9 @@ public class CloseEnvelopeScript : MonoBehaviour
                     if (Input.GetMouseButtonDown(0))
                     {
                         m_openEvelopeCanvas.worldCamera = Camera.main;
+
                         m_openEnvelope.SetActive(true);
+                        
                     }
                 }
             }
@@ -71,6 +74,7 @@ public class CloseEnvelopeScript : MonoBehaviour
 
             if (!onceActive)
             {
+                SoundMan.soundman.PlaySFX(5);
                 //get which level then which day
                 switch (levelManager.m_levelChosen)
                 {
@@ -132,6 +136,7 @@ public class CloseEnvelopeScript : MonoBehaviour
 
     public void StartTheDay()
 	{
+        SoundMan.soundman.PlaySFX(1);
         if(m_openEnvelope)
             m_openEnvelope.SetActive(false);
 

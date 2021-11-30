@@ -80,6 +80,8 @@ public class CustomerScripts : MonoBehaviour
     void MoveSpiritToTheEndPoint()
 	{
         m_moveCharacter = true;
+
+
     }
 
     

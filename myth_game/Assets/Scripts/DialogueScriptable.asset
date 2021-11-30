@@ -37,3 +37,7 @@ MonoBehaviour:
     options:
     - Seems you are competent, I will increase your workload for tomorrow.
     - You are getting hang of it. Good work.
+  - type: 6
+    options:
+    - Dont' stamp twice ! Ink is precious here
+    - Why are you trying to stamp twice ?! This is not an artbook
