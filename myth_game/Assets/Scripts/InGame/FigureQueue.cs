@@ -111,7 +111,6 @@ public class FigureQueue : MonoBehaviour
             Vector3 dir = end.position - fig.startPos;
             float weightDir = endScale - startScale;
             fig.figObj.transform.position = fig.startPos + finalWeight * dir;
-            fig.figObj.GetComponent<Animator>().SetBool("walk", true);
             fig.figObj.transform.localScale =
                 new Vector3(startScale, startScale, 1) + finalWeight * weightDir * new Vector3(1, 1, 0);
             fig.figObj.transform.localScale = new Vector3(
