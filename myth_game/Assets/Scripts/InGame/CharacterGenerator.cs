@@ -139,4 +139,12 @@ public class CharacterGenerator : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public void SetLayer(string layerName)
+    {
+        foreach (Transform trans in this.GetComponentsInChildren<Transform>(true))
+        {
+            trans.gameObject.layer = LayerMask.NameToLayer(layerName);
+        }
+    }
 }

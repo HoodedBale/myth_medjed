@@ -22,6 +22,7 @@ public class CustomerScripts : MonoBehaviour
 
     private GameObject tempBookOfRecord;
     private GameObject tempSpirit;
+    //private GameObject tempSpiritDup;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +43,24 @@ public class CustomerScripts : MonoBehaviour
             tempBookOfRecord = GameManager.instance.variables.m_currentBookOfRecord = Instantiate(m_bookOfRecordPrefab);
             tempBookOfRecord.transform.position = m_bookOfRecordSpawnLocation.position;
 
-
+            
             tempSpirit = Instantiate(m_spiritPrefab);
             tempSpirit.transform.position = m_spiritSpawnLocation.position;
 
+            //GameManager.instance.m_spawnCharacterLocation.transform.position = Camera.main.transform.position;
+
+            //tempSpiritDup = Instantiate(tempSpirit);
+            //tempSpiritDup.transform.position = GameManager.instance.m_spawnCharacterLocation.transform.position;
+            //tempSpiritDup.transform.parent = GameManager.instance.m_spawnCharacterLocation.transform;
+            //SetLayerRecursively(tempSpiritDup, "CharacterPanel1");
+
+
             //Currently serving customer
             GameManager.instance.variables.m_isServingCustomer = true; 
+        }
+        if (tempSpirit && tempSpirit.GetComponent<CharacterGenerator>())
+        {
+            tempSpirit.GetComponent<CharacterGenerator>().SetLayer("CharacterPanel1");
         }
 
         //Move the book if it is not in middle
@@ -67,7 +80,7 @@ public class CustomerScripts : MonoBehaviour
             {
                 m_moveCharacter = false;
                 Destroy(tempSpirit);
-
+                //Destroy(tempSpiritDup);
                 //Call in next customer
                 GameManager.instance.variables.m_isServingCustomer = false;
             }
@@ -80,9 +93,13 @@ public class CustomerScripts : MonoBehaviour
     void MoveSpiritToTheEndPoint()
 	{
         m_moveCharacter = true;
-
-
     }
 
-    
+    void SetLayerRecursively(GameObject go, string layerName)
+    {
+        foreach (Transform trans in go.GetComponentsInChildren<Transform>(true))
+        {
+            trans.gameObject.layer = LayerMask.NameToLayer(layerName);
+        }
+    }
 }

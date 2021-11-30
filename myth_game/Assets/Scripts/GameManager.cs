@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject m_levelManager;
+    public GameObject m_spawnCharacterLocation;
     public bool IsInputEnabled = true;
 
     public SinsScriptableObject m_sinsObject;
