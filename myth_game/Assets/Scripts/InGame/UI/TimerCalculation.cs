@@ -19,6 +19,9 @@ public class TimerCalculation : MonoBehaviour
     void Update()
     {
         TimerCalculationLogic();
+
+        if (Input.GetKeyDown(KeyCode.N))
+            GameManager.instance.variables.m_WorkTimer -= 10.0f ;
     }
 
 
