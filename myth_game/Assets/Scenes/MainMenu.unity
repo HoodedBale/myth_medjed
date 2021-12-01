@@ -2311,10 +2311,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b2e7d8113ca16f5418b9c4b48e50682c, type: 3}
   - {fileID: 8300000, guid: e79164013bbe5024690f77b81c5360b0, type: 3}
   - {fileID: 8300000, guid: 9b7f3683f9ee2e14caaa216ca2347dcd, type: 3}
-  - {fileID: 8300000, guid: 5aa10f0fec3b284439af7b56157884df, type: 3}
-  - {fileID: 8300000, guid: 841f4d81d0cf0fc4aae04cfcfb602c2b, type: 3}
-  - {fileID: 8300000, guid: ad61fa107ba8fbc46952b7f09303c1c5, type: 3}
-  - {fileID: 8300000, guid: 07941d07dce6a2243a9f075209158349, type: 3}
   sfxPrefab: {fileID: 7288851691919856753, guid: fcc738c765dfed84baa9dfc4b3307492, type: 3}
 --- !u!4 &1221838621
 Transform:

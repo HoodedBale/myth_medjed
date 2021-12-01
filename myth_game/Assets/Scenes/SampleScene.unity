@@ -2645,6 +2645,21 @@ MonoBehaviour:
   m_day3_3: {fileID: 1899075597}
   m_reincarnateHelper: {fileID: 1899075596}
   m_quotaText: {fileID: 1899075595}
+--- !u!114 &1530231006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530231003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.96815324, g: 1, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1632847163
 GameObject:
   m_ObjectHideFlags: 0

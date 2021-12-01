@@ -101,7 +101,7 @@ public class GameScripts : MonoBehaviour
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAFAIL;
                     GameManager.instance.StartDialogueEvent();
                     m_onceDialogue = true;
-                    SoundMan.soundman.PlaySFX(6);
+                   // SoundMan.soundman.PlaySFX(6);
                 }
                 if (GameManager.instance.variables.m_dialogueTimerEnded)
                 {
@@ -122,7 +122,7 @@ public class GameScripts : MonoBehaviour
                     GameManager.instance.variables.m_dialogueType = DialogueScriptableObject.DIALOGUETYPE.QUOTAPASS;
                     GameManager.instance.StartDialogueEvent();
                     m_onceDialogue = true;
-                    SoundMan.soundman.PlaySFX(7);
+                    //SoundMan.soundman.PlaySFX(7);
                 }
                 if (GameManager.instance.variables.m_dialogueTimerEnded)
                 {

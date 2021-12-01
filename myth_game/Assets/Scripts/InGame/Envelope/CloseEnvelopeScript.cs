@@ -74,7 +74,7 @@ public class CloseEnvelopeScript : MonoBehaviour
 
             if (!onceActive)
             {
-                SoundMan.soundman.PlaySFX(5);
+                //SoundMan.soundman.PlaySFX(5);
                 //get which level then which day
                 switch (levelManager.m_levelChosen)
                 {
