@@ -19,6 +19,6 @@ public class MainmenuButton : MonoBehaviour
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        FadeScreen.screen.LoadScene("MainMenu");
     }
 }
