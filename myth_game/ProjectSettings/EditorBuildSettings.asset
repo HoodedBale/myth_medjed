@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 913839397579fe0409415491fd80a746
+  - enabled: 1
+    path: Assets/Scenes/Reborn.unity
+    guid: 8cd1d92598f962f4c86982d21b9aeff5
   m_configObjects: {}
