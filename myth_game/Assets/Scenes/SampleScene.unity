@@ -2049,7 +2049,7 @@ MonoBehaviour:
   m_Level3MaxStamp: 9
   m_Level1MaxRecords: 3
   m_Level2MaxRecords: 5
-  m_Level3MaxRecords: 9
+  m_Level3MaxRecords: 7
   m_Text: {fileID: 1863698284}
   m_Textbox: {fileID: 708718265}
   m_closeEnvelope: {fileID: 1530231003}

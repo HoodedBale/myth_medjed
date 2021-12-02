@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cdd078f39cf774947b7b8573f1a6c903, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54c3dce8ad3251341b53a3a98d34d211, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1298,7 +1298,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Don't forget to use the last stamp on every single soul
+  m_text: 'This is the reincarnation stamp.
+
+    Don''t forget to use it on every
+    single soul'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e874fb840542424f902527491bf63ed, type: 2}
   m_sharedMaterial: {fileID: -3463995595490365776, guid: 3e874fb840542424f902527491bf63ed, type: 2}

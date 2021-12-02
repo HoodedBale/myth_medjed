@@ -8,6 +8,21 @@ public class LevelManager : MonoBehaviour
 
 
     public int m_currentDay = 1;
+    private static LevelManager m_instance = null;
+
+    void Awake()
+	{
+        if (m_instance == null)
+        {
+            m_instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
 
 
     [System.Serializable]
@@ -34,11 +49,11 @@ public class LevelManager : MonoBehaviour
         return -1;
 	}
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
+    //// Start is called before the first frame update
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(this.gameObject);
+    //}
 
     // Update is called once per frame
     void Update()

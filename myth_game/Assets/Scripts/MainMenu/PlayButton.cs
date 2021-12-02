@@ -14,9 +14,16 @@ public class PlayButton : MonoBehaviour
     public GameObject m_howButton;
     public GameObject Panel;
     public GameObject m_levelSelect;
-    // Start is called before the first frame update
+	// Start is called before the first frame update
 
-    public void GoToGameSceneLevel1()
+	void Start()
+	{
+
+        levelManager = GameObject.Find("LevelManager");
+		
+	}
+
+	public void GoToGameSceneLevel1()
 	{
         levelManager.GetComponent<LevelManager>().m_levelChosen = 1;
         //SceneManager.LoadScene(sceneName);
