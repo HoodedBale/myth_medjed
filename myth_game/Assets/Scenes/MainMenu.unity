@@ -1762,7 +1762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ENG150- Wei Qiang Chew, Teo Chin Ming, Mohammad Khairi Bin Meske
+  m_text: "Chew Wei Qiang, Teo Chin Ming, \nMohammad Khairi Bin Meske"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e874fb840542424f902527491bf63ed, type: 2}
   m_sharedMaterial: {fileID: -3463995595490365776, guid: 3e874fb840542424f902527491bf63ed, type: 2}

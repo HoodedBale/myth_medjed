@@ -67,6 +67,16 @@ public class RebornScene : MonoBehaviour
 
     public void QuitButton()
     {
+        StartCoroutine(QuitRoutine());
+    }
+
+    IEnumerator QuitRoutine()
+    {
+        while (fade.color.a < 1)
+        {
+            fade.color += new Color(0, 0, 0, 1) * fadeSpeed * Time.deltaTime;
+            yield return null;
+        }
         Application.Quit();
     }
 
